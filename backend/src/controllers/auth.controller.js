@@ -73,7 +73,7 @@ const logoutUser = async (req,res) =>{
 }
 
 const registerFoodPartner = async (req,res)=>{
-    const {name,email,password} = req.body;
+    const {name,email,password,phone,address,contactName} = req.body;
     const isAccountAlreadyExists = await foodPartnerModel.findOne({email});
     if(isAccountAlreadyExists){
         return res.status(400).json({
@@ -82,7 +82,7 @@ const registerFoodPartner = async (req,res)=>{
     }
     const hashPassword = await bcyrpt.hash(password, 10);
     const foodPartner = await foodPartnerModel.create({
-        name,email,password:hashPassword
+        name,email,password:hashPassword,phone,address,contactName
     })
     const token = jwt.sign({
         id:foodPartner._id
