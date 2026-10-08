@@ -128,7 +128,7 @@ const loginFoodPartner = async(req,res)=>{
         foodPartner:{
             _id:foodPartner._id,
             email:foodPartner.email,
-            nameL:foodPartner.name
+            name:foodPartner.name
         }
     })
 }
